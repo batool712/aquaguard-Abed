@@ -49,4 +49,15 @@ class AlertManager:
         
         print(f"Alert logged: {new_id} — {status} in {pool_id}/{zone_id} (confidence: {confidence:.2f}, response: {response_time_s}s)")
         return alerts
+    
+    def get_by_zone(self, alerts: list, pool_id: str, zone_id: str) -> list:
+        if not isinstance(alerts, list):
+         raise TypeError("alerts must be a list")
+
+        filtered_alerts=[]
+        for alert in alerts:
+            if (alert["pool_id"].upper()==pool_id.upper() and  alert["zone_id"].upper()==zone_id.upper()):
+                filtered_alerts.append(alert)
+
+        return filtered_alerts
           
