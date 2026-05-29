@@ -2,10 +2,10 @@ import csv
 from datetime import datetime
 
 class AlertManager:
-    def load_alert(self,filepath:str) ->list:
+    def load_alerts(self,filepath:str) ->list:
         alerts=[]
         try:
-            with open(filepath,"r") as file:
+            with open(filepath,"r",encoding="utf-8") as file:
                 reader=csv.DictReader(file)
                 for row in reader:
                     row["confidence"]=float(row["confidence"])
