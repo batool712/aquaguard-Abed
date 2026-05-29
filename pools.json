@@ -1,0 +1,64 @@
+{
+  "pools": [
+    {
+      "pool_id": "P01",
+      "name": "Olympic Pool",
+      "length_m": 50,
+      "width_m": 25,
+      "zones": [
+        {
+          "zone_id": "Z1",
+          "name": "Shallow End",
+          "depth_m": 1.2,
+          "camera": "CAM01"
+        },
+        {
+          "zone_id": "Z2",
+          "name": "Middle Lane",
+          "depth_m": 1.8,
+          "camera": "CAM02"
+        },
+        {
+          "zone_id": "Z3",
+          "name": "Deep End",
+          "depth_m": 2.5,
+          "camera": "CAM03"
+        }
+      ]
+    },
+    {
+      "pool_id": "P02",
+      "name": "Training Pool",
+      "length_m": 25,
+      "width_m": 12,
+      "zones": [
+        {
+          "zone_id": "Z1",
+          "name": "Entry Zone",
+          "depth_m": 0.9,
+          "camera": "CAM04"
+        },
+        {
+          "zone_id": "Z2",
+          "name": "Main Zone",
+          "depth_m": 1.5,
+          "camera": "CAM05"
+        }
+      ]
+    },
+    {
+      "pool_id": "P03",
+      "name": "Kids Pool",
+      "length_m": 15,
+      "width_m": 8,
+      "zones": [
+        {
+          "zone_id": "Z1",
+          "name": "Play Zone",
+          "depth_m": 0.6,
+          "camera": "CAM06"
+        }
+      ]
+    }
+  ]
+}
