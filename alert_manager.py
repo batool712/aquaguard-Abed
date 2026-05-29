@@ -14,4 +14,12 @@ class AlertManager:
             return alerts
         except FileNotFoundError:
             return []
-                    
+        
+        
+    def save_alerts(self,alerts:list,filepath:str) ->None:
+        fieldnames=["alert_id", "pool_id", "zone_id", "timestamp", "confidence", "status", "response_time_s"] 
+        with open(filepath, "w", newline="", encoding="utf-8") as file:
+            writer=csv.DictWriter(file,fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(alerts)
+        print(f"Alerts saved to {filepath}")              
