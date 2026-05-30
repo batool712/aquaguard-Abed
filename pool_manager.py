@@ -28,8 +28,8 @@ class PoolManager:
         return None 
     
     def display_pools(self,pools:list) -> None:
-        print("Pool ID | Name            | Size (m)    | Zones | Camera Coverage")
-        print("--------|-----------------|-------------|-------|----------------")
+        print("Pool ID  | Name            | Size (m)    | Zones | Camera Coverage")
+        print("-------- |-----------------|-------------|-------|----------------")
         
         for pool in pools:
             cameras=",".join(z['camera'] for z in pool["zones"])
