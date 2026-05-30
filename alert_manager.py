@@ -52,7 +52,7 @@ class AlertManager:
     
     def get_by_zone(self, alerts: list, pool_id: str, zone_id: str) -> list:
         if not isinstance(alerts, list):
-         raise TypeError("alerts must be a list")
+            raise TypeError("alerts must be a list")
 
         filtered_alerts=[]
         for alert in alerts:
@@ -60,4 +60,35 @@ class AlertManager:
                 filtered_alerts.append(alert)
 
         return filtered_alerts
+
+    def summary_stats(self, alerts: list) -> dict:
+        if not alerts:
+            return {}
+        
+        total= len(alerts)
+        rescued= sum(1 for a in alerts if a["status"] == "Rescued")
+        false_alarms= sum(1 for a in alerts if a["status"] == "False_Alarm")
+        missed = sum(1 for a in alerts if a["status"] == "Missed")
+        avg_conf = sum(a["confidence"] for a in alerts) / total
+        response_times = [a["response_time_s"] for a in alerts if a["response_time_s"] > 0]
+        avg_response  = sum(response_times) / len(response_times) if response_times else 0.0
+        
+        stats ={
+        "total":        total,
+        "rescued":      rescued,
+        "false_alarms": false_alarms,
+        "missed":       missed,
+        "avg_confidence":    round(avg_conf, 3),
+        "avg_response_time": round(avg_response, 1),
+        }
+        
+        print("\n=== Alerts Statistics ===")
+        print(f"{'Total Alerts':<20}: {stats['total']}")
+        print(f"{'Rescued':<20}: {stats['rescued']}")
+        print(f"{'False Alarms':<20}: {stats['false_alarms']}")
+        print(f"{'Missed':<20}: {stats['missed']}")
+        print(f"{'Avg Confidence':<20}: {stats['avg_confidence']:.3f}")
+        print(f"{'Avg Response':<20}: {stats['avg_response_time']:.1f}s")
+        
+        return stats 
           
