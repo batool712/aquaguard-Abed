@@ -82,13 +82,5 @@ class AlertManager:
         "avg_response_time": round(avg_response, 1),
         }
         
-        print("\n=== Alerts Statistics ===")
-        print(f"{'Total Alerts':<20}: {stats['total']}")
-        print(f"{'Rescued':<20}: {stats['rescued']}")
-        print(f"{'False Alarms':<20}: {stats['false_alarms']}")
-        print(f"{'Missed':<20}: {stats['missed']}")
-        print(f"{'Avg Confidence':<20}: {stats['avg_confidence']:.3f}")
-        print(f"{'Avg Response':<20}: {stats['avg_response_time']:.1f}s")
-        
         return stats 
           
